@@ -6,7 +6,7 @@ ifneq "$(RUNNED)" ""
 IP := $(shell docker inspect $(ALIAS) | grep "IPAddress\"" | head -n1 | cut -d '"' -f 4)
 endif
 STALE_IMAGES := $(shell docker images | grep "<none>" | awk '{print($$3)}')
-EMULATOR ?= "android-19"
+EMULATOR ?= "android-25"
 ARCH ?= "armeabi-v7a"
 
 COLON := :
@@ -14,7 +14,7 @@ COLON := :
 .PHONY = run ports kill ps
 
 all:
-	@docker build -q -t tracer0tong/android-emulator\:latest .
+	@docker build -q -t netdodo/android-emulator\:latest .
 	@docker images
 
 run: clean
